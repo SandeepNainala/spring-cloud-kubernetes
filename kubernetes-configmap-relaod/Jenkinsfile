@@ -11,3 +11,30 @@ pipeline {
 	string(name: 'AppName', description: "Name of the Application",defaultValue: "kubernetes-configmap-reload")
     string(name: 'docker_repo', description: "Name of docker repository",defaultValue: "sandeepnainala9")
   }
+
+  tools{
+    maven 'maven3'
+  }
+
+  stages {
+          stage('Git-Checkout') {
+              when {
+  				expression { params.action == 'create' }
+  			  }
+              steps {
+                  gitCheckout(
+                      branch: "main",
+                      url: "https://github.com/sandeepnainala/spring-cloud-kubernetes.git"
+                  )
+              }
+          }
+          stage('Build-Maven'){
+                      when {
+          				expression { params.action == 'create' }
+          			}
+              		steps {
+                  		dir("${params.AppName}") {
+                  			sh 'mvn clean package'
+                  		}
+              		}
+          	    }
