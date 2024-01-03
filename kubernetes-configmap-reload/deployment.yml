@@ -13,5 +13,5 @@ spec:
         app: kubernetes-configmap-reload
     spec:
       containers:
-      - name: kubernetes-configmap-reload
-        image: sandeepnainala9/kubernetes-configmap-reload
+        - name: kubernetes-configmap-reload
+          image: sandeepnainal9/kubernetes-configmap-reload:latest
