@@ -46,7 +46,7 @@
       notify:
         - restart apache2
 
-  hadlers:
+  handlers:
     - name: restart apache2
       service:
         name: apache2
