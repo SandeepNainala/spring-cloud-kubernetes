@@ -49,7 +49,7 @@ pipeline {
                    }
 
           }
-          stage("Docker-CleanUP") {
+           stage("Docker-CleanUP") {
           	        when {
           				expression { params.action == 'create' }
           			}
